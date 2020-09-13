@@ -1,23 +1,35 @@
-import { getLatestVersion } from '../../scripts/publish'
-import { test1 } from '../../test/scripts/test'
+import { PACKAGES, DEPS, getLatestVersion } from '../../scripts/publish'
 beforeAll(() => {
-  console.log('吃完饭后，走进了红浪漫洗浴')
+  console.log('beforeAll')
 })
 
 beforeEach(() => {
-  console.log('给了300元钱后......')
+  console.log('beforeEach')
 })
-test('getLatestVersion 测试', () => {
-  return test1()
-  // expect(response.data).toEqual({
-  //   success: true,
-  // })
+describe('constant tests', () => {
+  test('PACKAGES test', () => {
+    const testPackage = ['core', 'cli', 'create-mrapi-app']
+    for (let i = 0; i < testPackage.length; i++) {
+      expect(PACKAGES).toContain(testPackage[i])
+    }
+  })
+  test('DEPS test', () => {
+    const testDeps = ['@mrapi/core', '@mrapi/cli']
+    for (let i = 0; i < testDeps.length; i++) {
+      expect(DEPS).toContain(testDeps[i])
+    }
+  })
 })
-
+describe('function tests', () => {
+  test('getLatestVersion test', async () => {
+    const res = await getLatestVersion()
+    expect(typeof res).toBe('string')
+  })
+})
 afterEach(() => {
-  console.log('完成后，我心满意足的坐在沙发上！！！')
+  console.log('afterEach')
 })
 
 afterAll(() => {
-  console.log('有钱人的生活就是这么的枯燥且寂寞')
+  console.log('afterAll')
 })
