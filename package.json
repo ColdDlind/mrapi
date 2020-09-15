@@ -1,6 +1,5 @@
-{
   "name": "mrapi-workspace",
-  "version": "0.8.2",
+  "version": "1.0.0-beta.3",
   "private": true,
   "workspaces": [
     "packages/*",
@@ -8,7 +7,7 @@
   ],
   "scripts": {
     "clean": "pnpm recursive run clean && rm -rf node_modules",
-    "build": "pnpm run build --filter @mrapi/core && pnpm run build --filter @mrapi/cli && pnpm run build --filter create-mrapi-app",
+    "build": "pnpm run build --filter @mrapi/common && pnpm run build --filter @mrapi/nexus && pnpm run build --filter @mrapi/oas && pnpm run build --filter @mrapi/cli && pnpm run build --filter @mrapi/dal && pnpm run build --filter @mrapi/api",
     "watch": "pnpm run --parallel watch",
     "publish": "ts-node scripts/publish.ts",
     "publish:dry": "DRY_RUN=true ts-node scripts/publish.ts",
@@ -20,8 +19,7 @@
     "prettier": "pnpm run prettier:packages && pnpm run prettier:scripts && pnpm run prettier:docs",
     "prettier:packages": "prettier --write packages/**/*.ts",
     "prettier:scripts": "prettier --write scripts/**/*.ts",
-    "prettier:docs": "prettier --write docs/* README.md README.zh-CN.md",
-    "test": "jest"
+    "prettier:docs": "prettier --write docs/* README.md README.zh-CN.md"
   },
   "husky": {
     "hooks": {
@@ -29,23 +27,23 @@
     }
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "3.7.1",
     "chalk": "^4.1.0",
-    "eslint": "7.5.0",
-    "eslint-config-prettier": "6.11.0",
-    "eslint-config-standard-with-typescript": "18.0.2",
-    "eslint-plugin-import": "2.22.0",
-    "eslint-plugin-jest": "23.19.0",
+    "execa": "^4.0.3",
+    "jest": "^26.4.2",
+    "semver": "^7.3.2",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.0.1",
+    "eslint-config-standard-with-typescript": "19.0.1",
     "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-import": "2.22.0",
     "eslint-plugin-promise": "4.2.1",
     "eslint-plugin-standard": "4.0.1",
-    "execa": "^4.0.3",
-    "husky": "^4.2.5",
-    "jest": "^26.4.2",
-    "prettier": "2.0.5",
-    "semver": "^7.3.2",
-    "ts-node": "^8.10.2",
-    "typescript": "^3.9.6"
+    "eslint-config-prettier": "6.11.0",
+    "eslint-plugin-jest": "24.0.0",
+    "eslint": "7.8.1",
+    "prettier": "^2.1.1",
+    "husky": "^4.2.5"
   },
   "resolutions": {
     "graphql": "15.3.0"
@@ -59,12 +57,5 @@
     "singleQuote": true,
     "trailingComma": "all"
   },
-  "__npminstall_done": false,
-  "dependencies": {
-    "@babel/core": "^7.11.6",
-    "@babel/preset-env": "^7.11.5",
-    "@babel/preset-typescript": "^7.10.4",
-    "@types/jest": "^26.0.13",
-    "babel-jest": "^26.3.0"
-  }
+  "__npminstall_done": false
 }
