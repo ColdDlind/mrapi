@@ -17,7 +17,7 @@ export interface MrapiConfig {
   }
 }
 
-const defaultConfig: MrapiConfig = {
+export const defaultConfig: MrapiConfig = {
   // .env filePath
   envPath: 'config/.env',
 
@@ -97,6 +97,5 @@ export default function getConfig(str?: string): MrapiConfig {
       config = config.default
     }
   } catch {}
-
   return config ? merge(defaultConfig, config) : config
 }

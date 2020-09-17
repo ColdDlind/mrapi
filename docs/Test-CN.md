@@ -18,27 +18,26 @@
     - vscode
       下载 jest 插件
     - 支持 babel
-      `npm install --dev babel-jest @babel/core @babel/preset-env`
+      `npm install --save-dev babel-jest @babel/core @babel/preset-env`
     - 支持 ts
-      `npm install --dev @babel/preset-typescript`
-      `npm install --dev @types/jest`
+      `npm install --save-dev @babel/preset-typescript`
+      `npm install --save-dev @types/jest`
     - 根目录下添加 babel.config.js
 
-      ````js
+      ```js
       module.exports = {
-      presets: [
-      ['@babel/preset-env', { targets: { node: 'current' } }],
-      '@babel/preset-typescript',
-      ],
+        presets: [
+          ['@babel/preset-env', { targets: { node: 'current' } }],
+          '@babel/preset-typescript',
+        ],
       }
-
-           ```
-      ````
+      ```
 
       - package.json
         scripts 下添加
         ```js
         "test": "jest"
+        "coverage": "npx jest --coverage"
         ```
 
 5.  测试规范

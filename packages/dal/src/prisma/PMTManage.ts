@@ -1,5 +1,4 @@
 import { MultiTenant } from '@prisma-multi-tenant/client'
-
 import { getUrlAndProvider } from '@mrapi/common'
 
 interface PMTManageOptions {

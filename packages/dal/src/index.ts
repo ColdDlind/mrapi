@@ -207,7 +207,6 @@ export default class DAL {
     if (!this.defaultTenants.has(name)) {
       this.defaultTenants.set(name, option.defaultTenant)
     }
-
     const { nexusDir, prismaClientDir } = this.getDefaultSchemaOptions(
       name,
       option,

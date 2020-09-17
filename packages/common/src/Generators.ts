@@ -4,7 +4,7 @@ import { join } from 'path'
 import { spawnShell, formation } from './shell'
 import type { Mutation, GeneratorOptions as Options, Query } from './types'
 
-const tscOptions = [
+export const tscOptions = [
   '-t es2018',
   '--lib esnext',
   '--module commonjs',

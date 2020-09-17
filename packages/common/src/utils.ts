@@ -1,6 +1,5 @@
 import fs from 'fs'
 import { DBProvider } from './types'
-
 export const pathExists = async (
   path: string,
   options: { [name: string]: boolean } = {},
@@ -18,18 +17,14 @@ export const pathExists = async (
     })
   })
 }
-
 let nodeModules: string
 export const getNodeModules = (): string => {
   if (nodeModules) return nodeModules
-
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const findNodeModules = require('find-node-modules')
   nodeModules = findNodeModules({ cwd: process.cwd(), relative: false })[0]
-
   return nodeModules
 }
-
 export const getUrlAndProvider = (url: string) => {
   const _url = url.trim()
   if (!_url) {
@@ -41,7 +36,6 @@ export const getUrlAndProvider = (url: string) => {
       `unable to detect database database provider, received empty '${str}'`,
     )
   }
-
   let provider = ''
   switch (str) {
     case DBProvider.mysql:
@@ -58,7 +52,6 @@ export const getUrlAndProvider = (url: string) => {
         `Unrecognized '${str}' provider. Known providers: ${DBProvider.mysql}, ${DBProvider.postgresql}, ${DBProvider.sqlite}`,
       )
   }
-
   return {
     url: _url,
     provider,

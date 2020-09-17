@@ -37,5 +37,8 @@
   "bugs": {
     "url": "https://github.com/mrapi-js/mrapi/issues"
   },
-  "homepage": "https://github.com/mrapi-js/mrapi#readme"
+  "homepage": "https://github.com/mrapi-js/mrapi#readme",
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.1"
+  }
 }

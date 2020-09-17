@@ -1,9 +1,7 @@
 {
   "compilerOptions": {
     "incremental": true,
-
     "baseUrl": ".",
-
     "target": "es2018",
     "module": "commonjs",
     "moduleResolution": "node",
@@ -14,7 +12,6 @@
     "resolveJsonModule": true,
     "sourceMap": true,
     "declaration": true,
-
     "suppressImplicitAnyIndexErrors": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
@@ -22,9 +19,8 @@
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "skipLibCheck": true,
-
     "composite": true
   },
-  "include": ["packages", "scripts", "typings/**/*.ts"],
+  "include": ["packages", "scripts", "test", "testData", "typings/**/*.ts"],
   "exclude": ["**/node_modules", "**/lib"]
 }
