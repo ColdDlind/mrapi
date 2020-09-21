@@ -35,7 +35,6 @@ export default class PMTManage {
       }
       return
     }
-
     // add
     const { PrismaClient } = options
     const multiTenant = new MultiTenant({

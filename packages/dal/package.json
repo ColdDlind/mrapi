@@ -19,7 +19,9 @@
     "build": "tsc -b .",
     "watch": "tsc --preserveWatchOutput --watch",
     "prisma": "prisma",
-    "clean": "rm -rf lib && rm -rf tsconfig.tsbuildinfo && rm -rf node_modules"
+    "clean": "rm -rf lib && rm -rf tsconfig.tsbuildinfo && rm -rf node_modules",
+    "test": "npm run test",
+    "coverage": "npx jest --coverage"
   },
   "dependencies": {
     "@mrapi/common": "workspace:*",

@@ -1,0 +1,412 @@
+{
+  "swagger": "2.0",
+  "basePath": "/api//testRoutes",
+  "info": { "title": "[/testRoutes] Started openAPI.", "version": "1.0.0" },
+  "paths": {
+    "/users": {
+      "parameters": [],
+      "get": {
+        "description": "Query the users by parameter.",
+        "operationId": "getUsers",
+        "tags": ["users"],
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "type": "array",
+            "items": { "type": "string" },
+            "required": false,
+            "description": "Wraps all model fields in a type so that the list can be filtered by any property. Supported types \"equals\", \"not\", \"in\", \"not_in\", \"lt\", \"lte\", \"gt\", \"gte\", \"contains\", \"not_contains\", \"starts_with\", \"not_starts_with\", \"ends_with\", \"not_ends_with\". Example: id_in:1,2,3"
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "type": "array",
+            "items": { "type": "string", "default": "name:asc" },
+            "required": false,
+            "description": "Lets you order the returned list by any property. Example: name:asc,id:desc"
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "type": "integer",
+            "required": false,
+            "description": "Specifies how many of the returned objects in the list should be skipped.",
+            "default": 0
+          },
+          {
+            "name": "take",
+            "in": "query",
+            "type": "integer",
+            "required": false,
+            "description": "Specifies how many objects should be returned in the list (as seen from the beginning (+ve value) or end (-ve value) either of the list or from the cursor position if mentioned)",
+            "default": 10
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "description": "Specifies the position for the list (the value typically specifies an id or another unique value). Example: id:xxxx"
+          },
+          {
+            "name": "select",
+            "in": "query",
+            "type": "array",
+            "items": { "type": "string" },
+            "required": false,
+            "description": "Specifies which properties to include on the returned object, but not both at the same time. Example: id,name"
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "type": "array",
+            "items": { "type": "string" },
+            "required": false,
+            "description": "Specifies which relations should be eagerly loaded on the returned object, but not both at the same time. Example: Post"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of users that match the parameters.",
+            "schema": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/User" }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": { "$ref": "#/definitions/Error" }
+          }
+        }
+      },
+      "post": {
+        "description": "Create a new users.",
+        "operationId": "createUser",
+        "tags": ["users"],
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "schema": { "$ref": "#/definitions/UserCreateInput" },
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "user created successfully.",
+            "schema": { "$ref": "#/definitions/User" }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": { "$ref": "#/definitions/Error" }
+          }
+        }
+      }
+    },
+    "/posts": {
+      "parameters": [],
+      "get": {
+        "description": "Query the posts by parameter.",
+        "operationId": "getPosts",
+        "tags": ["posts"],
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "type": "array",
+            "items": { "type": "string" },
+            "required": false,
+            "description": "Wraps all model fields in a type so that the list can be filtered by any property. Supported types \"equals\", \"not\", \"in\", \"not_in\", \"lt\", \"lte\", \"gt\", \"gte\", \"contains\", \"not_contains\", \"starts_with\", \"not_starts_with\", \"ends_with\", \"not_ends_with\". Example: id_in:1,2,3"
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "type": "array",
+            "items": { "type": "string", "default": "name:asc" },
+            "required": false,
+            "description": "Lets you order the returned list by any property. Example: name:asc,id:desc"
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "type": "integer",
+            "required": false,
+            "description": "Specifies how many of the returned objects in the list should be skipped.",
+            "default": 0
+          },
+          {
+            "name": "take",
+            "in": "query",
+            "type": "integer",
+            "required": false,
+            "description": "Specifies how many objects should be returned in the list (as seen from the beginning (+ve value) or end (-ve value) either of the list or from the cursor position if mentioned)",
+            "default": 10
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "type": "string",
+            "required": false,
+            "description": "Specifies the position for the list (the value typically specifies an id or another unique value). Example: id:xxxx"
+          },
+          {
+            "name": "select",
+            "in": "query",
+            "type": "array",
+            "items": { "type": "string" },
+            "required": false,
+            "description": "Specifies which properties to include on the returned object, but not both at the same time. Example: id,name"
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "type": "array",
+            "items": { "type": "string" },
+            "required": false,
+            "description": "Specifies which relations should be eagerly loaded on the returned object, but not both at the same time. Example: Post"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The list of posts that match the parameters.",
+            "schema": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/Post" }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": { "$ref": "#/definitions/Error" }
+          }
+        }
+      },
+      "post": {
+        "description": "Create a new posts.",
+        "operationId": "createPost",
+        "tags": ["posts"],
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "schema": { "$ref": "#/definitions/PostCreateInput" },
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "post created successfully.",
+            "schema": { "$ref": "#/definitions/Post" }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": { "$ref": "#/definitions/Error" }
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "parameters": [],
+      "get": {
+        "description": "Query the user by parameter.",
+        "operationId": "getOneUser",
+        "tags": ["users"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true,
+            "description": "id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The user information",
+            "schema": { "$ref": "#/definitions/User" }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": { "$ref": "#/definitions/Error" }
+          }
+        }
+      },
+      "put": {
+        "description": "Update a user.",
+        "operationId": "updateOneUser",
+        "tags": ["users"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true,
+            "description": "id"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "schema": { "$ref": "#/definitions/UserCreateInput" },
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "User updated successfully.",
+            "schema": { "$ref": "#/definitions/User" }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": { "$ref": "#/definitions/Error" }
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete user.",
+        "operationId": "deleteOneUser",
+        "tags": ["users"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true,
+            "description": "id"
+          }
+        ],
+        "responses": {
+          "200": { "description": "User deleted successfully." },
+          "default": {
+            "description": "Unexpected error",
+            "schema": { "$ref": "#/definitions/Error" }
+          }
+        }
+      }
+    },
+    "/posts/{id}": {
+      "parameters": [],
+      "get": {
+        "description": "Query the post by parameter.",
+        "operationId": "getOnePost",
+        "tags": ["posts"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true,
+            "description": "id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The post information",
+            "schema": { "$ref": "#/definitions/Post" }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": { "$ref": "#/definitions/Error" }
+          }
+        }
+      },
+      "put": {
+        "description": "Update a post.",
+        "operationId": "updateOnePost",
+        "tags": ["posts"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true,
+            "description": "id"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "schema": { "$ref": "#/definitions/PostCreateInput" },
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Post updated successfully.",
+            "schema": { "$ref": "#/definitions/Post" }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": { "$ref": "#/definitions/Error" }
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete post.",
+        "operationId": "deleteOnePost",
+        "tags": ["posts"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true,
+            "description": "id"
+          }
+        ],
+        "responses": {
+          "200": { "description": "Post deleted successfully." },
+          "default": {
+            "description": "Unexpected error",
+            "schema": { "$ref": "#/definitions/Error" }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Error": {
+      "type": "object",
+      "properties": {
+        "code": { "description": "Error code.", "type": "integer" },
+        "message": { "description": "Error message.", "type": "string" }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "email": { "description": "email", "type": "string" },
+        "id": { "description": "id", "type": "integer" },
+        "name": { "description": "name", "type": "string" }
+      },
+      "required": ["email", "id"]
+    },
+    "UserCreateInput": {
+      "type": "object",
+      "properties": {
+        "email": { "description": "email", "type": "string" },
+        "name": { "description": "name", "type": "string" }
+      },
+      "required": ["email"]
+    },
+    "Post": {
+      "type": "object",
+      "properties": {
+        "authorId": { "description": "authorId", "type": "integer" },
+        "content": { "description": "content", "type": "string" },
+        "id": { "description": "id", "type": "integer" },
+        "published": { "description": "published", "type": "boolean" },
+        "title": { "description": "title", "type": "string" }
+      },
+      "required": ["id", "published", "title"]
+    },
+    "PostCreateInput": {
+      "type": "object",
+      "properties": {
+        "content": { "description": "content", "type": "string" },
+        "published": { "description": "published", "type": "boolean" },
+        "title": { "description": "title", "type": "string" }
+      },
+      "required": ["title"]
+    }
+  },
+  "tags": [{ "name": "posts" }, { "name": "users" }]
+}
